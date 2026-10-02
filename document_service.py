@@ -5,7 +5,7 @@ from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Inches,Pt
 from fpdf import FPDF
-from utils.text_utils import sanitize_text
+def sanitize_text(text): return text if text else ""`
 BASE_DIR=Path(__file__).resolve().parents[1]; LOGO_PATH=BASE_DIR/"assets"/"legal_ease_logo.png"
 def format_txt(text): return sanitize_text(text).encode("utf-8")
 def format_docx(text,doc_type):
