@@ -1,6 +1,6 @@
 from datetime import date
 import requests, streamlit as st
-from services.document_service import export_filename,format_docx,format_pdf,format_txt
+from document_service import export_filename,format_docx,format_pdf,format_txt
 from utils.config import get_settings
 from utils.text_utils import html_preview
 settings=get_settings(); st.set_page_config(page_title="LegalEase",page_icon="⚖️",layout="wide")
