@@ -1,4 +1,46 @@
-from io import BytesIO
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.shared import Inches, Pt
+from fpdf import FPDF
+from pathlib import Path
+import re
+
+# FIX 1: Missing function-a inga-ve add pannitom
+def sanitize_text(text):
+    if not text:
+        return ""
+    text = str(text)
+    # Unwanted characters clean
+    text = re.sub(r'[^\x00-\x7F]+', ' ', text)
+    return text.strip()
+
+BASE_DIR = Path(__file__).resolve().parents[1] if len(Path(__file__).resolve().parents) > 1 else Path(__file__).resolve().parent
+LOGO_PATH = BASE_DIR / "assets" / "legal_ease_logo.png"
+
+def format_txt(text):
+    clean = sanitize_text(text)
+    return clean.encode("utf-8")
+
+def format_docx(text, doc_type="Document"):
+    from docx import Document
+    doc = Document()
+    clean = sanitize_text(text)
+    # Add content
+    p = doc.add_paragraph(clean)
+    p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    return doc
+
+def format_pdf(text):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.set_font("Arial", size=11)
+    clean = sanitize_text(text)
+    pdf.multi_cell(0, 10, clean)
+    return pdf
+
+def export_filename(doc_type, ext="txt"):
+    safe = re.sub(r'[^a-zA-Z0-9]+', '_', doc_type)
+    return f"{safe}.{ext}"from io import BytesIO
 from pathlib import Path
 import re
 from docx import Document
