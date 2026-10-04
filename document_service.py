@@ -14,10 +14,21 @@ def format_txt(text):
     return sanitize_text(text).encode("utf-8")
 
 def format_docx(text, doc_type=""):
+    from io import BytesIO
     from docx import Document
+
     doc = Document()
     doc.add_paragraph(sanitize_text(text))
-    return doc
+
+    output = BytesIO()
+    doc.save(output)
+    output.seek(0)
+
+    return output
+   
+ 
+   
+    
 
 def format_pdf(text):
     from fpdf import FPDF
