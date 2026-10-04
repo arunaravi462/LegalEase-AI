@@ -124,7 +124,7 @@ with col_right:
                 use_container_width=True
             )
         with c3:
-            pdf_bytes = get_bytes(format_pdf, st.session_state.document)
+            pdf_bytes = format_pdf(st.session_state.d_result)
             st.download_button(
                 "Download PDF",
                 data=pdf_bytes,
