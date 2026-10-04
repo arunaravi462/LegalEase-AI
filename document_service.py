@@ -38,7 +38,7 @@ def format_pdf(text):
     pdf.add_page()
     pdf.set_font("Arial", size=12)
     pdf.multi_cell(0, 10, sanitize_text(text))
-    return pdf
+        return pdf.output(dest='S').encode('latin-1')
 
 BASE_DIR = Path(__file__).resolve().parent
 LOGO_PATH = BASE_DIR / "assets" / "legal_ease_logo.png"
