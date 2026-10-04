@@ -9,6 +9,8 @@ def sanitize_text(text):
 def export_filename(doc_type, ext="txt"):
     safe = re.sub(r'[^a-zA-Z0-9]', '_', doc_type)
     return f"{safe}.{ext}"
+    
+filename = export_filename
 
 def format_txt(text):
     return sanitize_text(text).encode("utf-8")
