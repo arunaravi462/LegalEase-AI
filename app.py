@@ -110,7 +110,7 @@ with col_right:
             st.download_button(
                 "Download TXT",
                 data=txt_bytes,
-                file_name=filename("txt"),
+                file_name="document.txt",
                 mime="text/plain",
                 use_container_width=True
             )
@@ -119,7 +119,7 @@ with col_right:
             st.download_button(
                 "Download DOCX",
                 data=docx_bytes,
-                file_name=filename("docx"),
+                file_name="document.docx",
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                 use_container_width=True
             )
@@ -128,7 +128,7 @@ with col_right:
            st.download_button(
              "Download PDF",
               data=pdf_bytes,
-              file_name="filoname.pdf",
+              file_name="document.pdf",
               mime="application/pdf",
               use_container_width=True
            )
