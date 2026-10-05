@@ -108,20 +108,20 @@ with col_right:
         with c1:
             txt_bytes = get_bytes(format_txt, st.session_state.document)
             st.download_button(
-                "Download TXT",
-                data=txt_bytes,
-                file_name="document.txt",
-                mime="text/plain",
-                use_container_width=True
+              "Download TXT",
+               data=txt_bytes, 
+               file_name="document.txt",
+               mime="text/plain",
+               use_container_width=True
             )
         with c2:
             docx_bytes = get_bytes(format_docx, st.session_state.document)
             st.download_button(
-                "Download DOCX",
-                data=docx_bytes,
-                file_name="document.docx",
-                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                use_container_width=True
+              "Download DOCX",
+               data=docx_bytes,
+               file_name="document.docx",
+               mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+               use_container_width=True
             )
        with c3:
            pdf_bytes = get_bytes(format_pdf, st.session_state.document)
