@@ -132,7 +132,7 @@ with col_right:
                 mime="application/pdf",
                 use_container_width=True
             )
- else:
+   else:
         st.info("Your generated document will appear here after generation.")
 
 def validate_inputs(doc_type, parties_text, terms_text):
