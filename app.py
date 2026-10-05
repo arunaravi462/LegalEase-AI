@@ -123,15 +123,15 @@ with col_right:
                 mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                 use_container_width=True
             )
-        with c3:
-    pdf_bytes = get_bytes(format_pdf, st.session_state.document)
-    st.download_button(
-        "Download PDF",
-        data=pdf_bytes,
-        file_name="filoname.pdf",
-        mime="application/pdf",
-        use_container_width=True
-    )
+       with c3:
+           pdf_bytes = get_bytes(format_pdf, st.session_state.document)
+           st.download_button(
+             "Download PDF",
+              data=pdf_bytes,
+              file_name="filoname.pdf",
+              mime="application/pdf",
+              use_container_width=True
+           )
   else:
         st.info("Your generated document will appear here after generation.")
 
@@ -156,6 +156,13 @@ def render_footer():
 
 if st.session_state.document:
     render_footer()
+
+   
+       
+        
+        
+        
+ 
 
     
             
