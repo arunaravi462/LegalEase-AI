@@ -85,14 +85,14 @@ with col_right:
     st.subheader("📄 Document Preview")
     if st.session_state.document:
         st.markdown(html_preview(st.session_state.document), unsafe_allow_html=True)
-        
-        edited_text = st.text_area("Editable Content", value=st.session_state.document, height=380, label_visibility="collapsed")
+
+        edited_text = st.text_area("Editable Content", value=st.session_state.document, height=360, label_visibility="collapsed")
         if st.button("💾 Save Edits", use_container_width=True):
             st.session_state.document = edited_text
             st.success("Edits Saved!")
 
         st.divider()
-        st.subheader("⬇️ Download Options")
+        st.subheader("📥 Download Options")
 
         def get_bytes(func, content):
             result = func(content)
@@ -108,31 +108,31 @@ with col_right:
         with c1:
             txt_bytes = get_bytes(format_txt, st.session_state.document)
             st.download_button(
-              "Download TXT",
-               data=txt_bytes, 
-               file_name="document.txt",
-               mime="text/plain",
-               use_container_width=True
+                "Download TXT",
+                data=txt_bytes,
+                file_name="document.txt",
+                mime="text/plain",
+                use_container_width=True
             )
         with c2:
             docx_bytes = get_bytes(format_docx, st.session_state.document)
             st.download_button(
-              "Download DOCX",
-               data=docx_bytes,
-               file_name="document.docx",
-               mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-               use_container_width=True
+                "Download DOCX",
+                data=docx_bytes,
+                file_name="document.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                use_container_width=True
             )
-       with c3:
-           pdf_bytes = get_bytes(format_pdf, st.session_state.document)
-           st.download_button(
-             "Download PDF",
-              data=pdf_bytes,
-              file_name="document.pdf",
-              mime="application/pdf",
-              use_container_width=True
-           )
-  else:
+        with c3:
+            pdf_bytes = get_bytes(format_pdf, st.session_state.document)
+            st.download_button(
+                "Download PDF",
+                data=pdf_bytes,
+                file_name="document.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+ else:
         st.info("Your generated document will appear here after generation.")
 
 def validate_inputs(doc_type, parties_text, terms_text):
@@ -156,6 +156,9 @@ def render_footer():
 
 if st.session_state.document:
     render_footer()
+    
+        
+  
 
    
        
