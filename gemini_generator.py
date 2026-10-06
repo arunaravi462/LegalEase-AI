@@ -10,7 +10,7 @@ class GeminiDocumentGenerator:
         if not api_key:
             raise ValueError("GEMINI_API_KEY is missing in .env file")
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel("gemini-2.0-flash")
+        self.model = genai.GenerativeModel("gemini-3.8-flash")
 
     def generate_document(self, document_type: str, parties: str, terms: str, dates: str) -> str:
         prompt = f"""
